@@ -152,15 +152,16 @@ def get_services_Command(update: Update, context):
     data = str(data).replace('\\n', '\n').replace('\\t', '\t')[2:-1]
     update.message.reply_text(data)
 
-def get_repl_logs_Command(update: Update, context):
+"""def get_repl_logs_Command(update: Update, context):
     client.connect(hostname=host, username=username, password=password, port=port)
-    stdin, stdout, stderr = client.exec_command('cat /var/log/postgresql/postgresql-14-main.log | grep replication')
+    stdin, stdout, stderr = client.exec_command('cat /app/logs/postgresql.log | grep replication')
+    # stdin, stdout, stderr = client.exec_command('cat /var/log/postgresql/postgresql-14-main.log | grep replication')
     data = stdout.read() + stderr.read()
     client.close()
     data = str(data).replace('\\n', '\n').replace('\\t', '\t')[2:-1]
-    update.message.reply_text(data) 
+    update.message.reply_text(data) """
 
-"""def get_repl_logs_Command(update: Update, context):
+def get_repl_logs_Command(update: Update, context):
     log_dir = Path('/app/logs')
     log_file_path = log_dir / 'postgresql.log'
     try:
@@ -181,7 +182,7 @@ def get_repl_logs_Command(update: Update, context):
             logging.error("Файл логов не нашёлся")
     except Exception as e:
         update.message.reply_text(f"Error log: {str(e)}")
-        logging.error(f"Error log: {str(e)}") """
+        logging.error(f"Error log: {str(e)}")
 
 def findPhoneNumbersCommand(update: Update, context):
     update.message.reply_text('Введите текст для поиска телефонных номеров: ')
