@@ -31,9 +31,6 @@ services:
       - pgdata:/var/lib/postgresql/data
       - pglog:/var/log/postgresql
     command: |
-      bash -c "
-      apt install net-tools
-      "
       postgres
       -c wal_level=replica
       -c hot_standby=on
