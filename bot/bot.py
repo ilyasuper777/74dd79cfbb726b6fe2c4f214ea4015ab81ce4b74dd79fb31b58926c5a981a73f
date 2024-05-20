@@ -116,6 +116,9 @@ def get_ps_Command(update: Update, context):
 
 def get_ss_Command(update: Update, context):
     client.connect(hostname=host, username=username, password=password, port=port)
+    client.exec_command('apt install net-tools')
+    client.close()
+    client.connect(hostname=host, username=username, password=password, port=port)
     stdin, stdout, stderr = client.exec_command('netstat -tulpn ')
     data = stdout.read() + stderr.read()
     client.close()
