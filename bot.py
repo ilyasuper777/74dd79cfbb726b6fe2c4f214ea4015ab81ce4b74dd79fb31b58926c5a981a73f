@@ -154,7 +154,7 @@ def get_services_Command(update: Update, context):
 
 def get_repl_logs_Command(update: Update, context):
     client.connect(hostname=host, username=username, password=password, port=port)
-    stdin, stdout, stderr = client.exec_command('cat /var/log/postgresql/postgresql-14-main.log | grep replication')
+    stdin, stdout, stderr = client.exec_command('cat /var/log/postgresql/postgresql-14-main.log | grep -a replication')
     data = stdout.read() + stderr.read()
     client.close()
     data = str(data).replace('\\n', '\n').replace('\\t', '\t')[2:-1]
