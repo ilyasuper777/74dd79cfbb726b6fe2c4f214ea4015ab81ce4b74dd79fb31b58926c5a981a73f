@@ -232,7 +232,7 @@ def save_PhoneNumbers(update: Update, context: CallbackContext) -> int:
             cursor = connection.cursor()
             phoneNumberList = context.user_data.get('phoneNumberList',[])
             for i in phoneNumberList:
-                cursor.execute(f"INSERT INTO `PhoneNumbers` (Value) VALUES ('{i}');")
+                cursor.execute(f"INSERT INTO phonenumbers (Value) VALUES ('{i}');")
             connection.commit()
             update.message.reply_text("Команда успешно выполнена")
             logging.info("Команда успешно выполнена")
@@ -356,7 +356,7 @@ def get_phone_numbers_Command(update: Update, context):
                                         database=os.getenv("DB_DATABASE"))
 
         cursor = connection.cursor()
-        cursor.execute("SELECT * FROM `PhoneNumbers`;")
+        cursor.execute("SELECT * FROM phonenumbers;")
         data = cursor.fetchall()
         reply = ""
         i = 0
