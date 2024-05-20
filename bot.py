@@ -338,7 +338,7 @@ def get_emails_logs_Command(update: Update, context):
         update.message.reply_text(reply)
         logging.info("Команда успешно выполнена")
     except (Exception, Error) as error:
-        update.message.reply_text("Произошла проблема при работе с базой данных!")
+        update.message.reply_text("Данных нет или произошла проблема при работе с базой данных!")
         logging.error("Ошибка при работе с PostgreSQL: %s", error)
     finally:
         if connection is not None:
@@ -367,7 +367,7 @@ def get_phone_numbers_Command(update: Update, context):
         update.message.reply_text(reply)
         logging.info("Команда успешно выполнена")
     except (Exception, Error) as error:
-        update.message.reply_text("Произошла проблема при работе с базой данных!")
+        update.message.reply_text("Данных нет или произошла проблема при работе с базой данных!")
         logging.error("Ошибка при работе с PostgreSQL: %s", error)
     finally:
         if connection is not None:
