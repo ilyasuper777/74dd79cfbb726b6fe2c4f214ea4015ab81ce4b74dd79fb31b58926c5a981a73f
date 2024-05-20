@@ -158,7 +158,10 @@ def get_repl_logs_Command(update: Update, context):
     data = stdout.read() + stderr.read()
     client.close()
     data = str(data).replace('\\n', '\n').replace('\\t', '\t')[2:-1]
-    update.message.reply_text(data) 
+    msgs = [data[i:i + 4096] for i in range(0, len(data), 4096)]
+    for text in msgs:
+        update.message.reply_text(text=text)
+    #update.message.reply_text(data) 
 
 """def get_repl_logs_Command(update: Update, context):
     log_dir = Path('/app/logs')
